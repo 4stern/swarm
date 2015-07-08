@@ -1,0 +1,6 @@
+name: swarm
+description: >
+  testing swarm behaviors
+version: 0.0.1
+author: Robert Beyer <4sternrb@googlemail.com>
+dependencies:
