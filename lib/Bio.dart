@@ -16,6 +16,10 @@ class Counter /*implements CounterInterface*/ {
         this.count += value;
     }
 
+    void sub(num value) {
+        this.count -= value;
+    }
+
     String toString() {
         return count.toString();
     }
@@ -34,6 +38,8 @@ class Bio {
     double createChildsPerSecond;
     String name;
     num lastCalcTime;
+
+    num increaser = 100;
 
     Bio({this.parent, this.child, num startValue: 0, this.createChildsPerSecond: 0.0 }){
 
@@ -65,6 +71,32 @@ class Bio {
         this.child.counter.add(additionalCount); 
     }
 
+    void increaseCounter(int count) {
+        if (canIncreaseCounter(count) && hasChild()) {
+            this.child.counter.sub(this.increaser*count);
+            this.counter.add(count);
+        }
+    }
+    bool canIncreaseCounter(int count){
+        bool can = false;
+        if (hasChild()) {
+            int childCounter = this.child.counter.toInt();
+            if (childCounter >= this.increaser*count) {
+                can = true;
+            }
+        }
+        return can;
+    }
+
+    int possibleIncrease() {
+        int possible = 0;
+        if (hasChild()) {
+            int childCounter = this.child.counter.toInt();
+            possible = (childCounter / this.increaser).toInt();
+        }
+        return possible;
+    }
+
     /*  */
     void calc() {
         if (hasChild()) {
@@ -84,5 +116,36 @@ class Bio {
 }
 
 class Bakterie extends Bio {
-    Bakterie({Bio parent, Bio child, num startValue: 0, double createChildsPerSecond: 0.0 }) : super(parent: parent, child: child, startValue: startValue, createChildsPerSecond: createChildsPerSecond );
+    Bakterie
+    ({
+        Bio parent, Bio child, 
+        num startValue: 0, double createChildsPerSecond: 0.0 }) : super(parent: parent, child: child, startValue: startValue, createChildsPerSecond: createChildsPerSecond 
+    ){
+        this.increaser = 1000;
+        this.name = "Bakterie";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

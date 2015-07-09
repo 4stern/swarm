@@ -54,6 +54,23 @@ void main() {
             }
         }
 
+
+
+        /* start autobuy*/
+        print(bios[3].possibleIncrease());
+        if (bios[3].possibleIncrease() > 0) {
+            bios[3].increaseCounter(bios[3].possibleIncrease());
+        }
+        print(bios[2].possibleIncrease());
+        if (bios[2].possibleIncrease() > 0) {
+            bios[2].increaseCounter(bios[2].possibleIncrease());
+        }
+        print(bios[1].possibleIncrease());
+        if (bios[1].possibleIncrease() > 0) {
+            bios[1].increaseCounter(bios[1].possibleIncrease());
+        }
+        /* stop autobuy*/
+
         for(num i=bios.length-1; i>=0; i--) {
             Bio bio = bios[i];
             print(bio.name);
@@ -62,11 +79,10 @@ void main() {
             print('\tcount '+bio.counter.toInt().toString());
             print('\tquote '+bio.createChildsPerSecond.toString());
         }
+
         print('-------------------------------------------------------');
 
-        sleep(const Duration(seconds:0.5));
+        sleep(const Duration(seconds:0.1));
         
     }
-
-
 }
