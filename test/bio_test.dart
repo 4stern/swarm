@@ -1,17 +1,21 @@
 library swarm;
 
 import 'package:swarm/Bio.dart';
+import 'dart:io';
 
 void main() {
     List<Bio> bios = new List<Bio>();
 
     // create
-    for(num i=0; i<5; i++) {
+    for(num i=0; i<3; i++) {
         bios.add(new Bio(
             startValue:             i==0 || i==1 || i==2 ? 10   : 0,
             createChildsPerSecond:  i==1 || i==2         ?  1.0 : 0.0
         ));
     }
+    bios.add(new Bakterie(
+        startValue:1, createChildsPerSecond: 1.0
+    ));
 
     // links
     for(num i=0; i<bios.length-1; i++) {
@@ -32,22 +36,36 @@ void main() {
     }
 
 
-    for (var time=0; time<100; time++) {
+    /*for (var time=0; time<100; time++) {
         for (var i=0; i<bios.length; i++) {
             Bio bio = bios[i];
             bio.calc();
         }
-    }
+    }*/
 
     print('-------------------------------------------------------');
 
-    for(num i=bios.length-1; i>=0; i--) {
-        Bio bio = bios[i];
-        print(bio.name);
-        if(bio.hasParent())print('\t..has Parent '+bio.getParent().name);
-        if(bio.hasChild())print('\t..has Child '+bio.getChild().name);
-        print('\tcount '+bio.counter.count.toString());
-        print('\tquote '+bio.createChildsPerSecond.toString());
+    while (true) {
+
+        for (var time=0; time<100; time++) {
+            for (var i=0; i<bios.length; i++) {
+                Bio bio = bios[i];
+                bio.calc();
+            }
+        }
+
+        for(num i=bios.length-1; i>=0; i--) {
+            Bio bio = bios[i];
+            print(bio.name);
+            if(bio.hasParent())print('\t..has Parent '+bio.getParent().name);
+            if(bio.hasChild())print('\t..has Child '+bio.getChild().name);
+            print('\tcount '+bio.counter.toInt().toString());
+            print('\tquote '+bio.createChildsPerSecond.toString());
+        }
+        print('-------------------------------------------------------');
+
+        sleep(const Duration(seconds:0.5));
+        
     }
 
 
