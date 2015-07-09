@@ -1,6 +1,6 @@
 library swarm;
 
-import 'package:swarm/bio.dart';
+import 'package:swarm/Bio.dart';
 
 void main() {
     List<Bio> bios = new List<Bio>();
