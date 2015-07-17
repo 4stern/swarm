@@ -4,3 +4,6 @@ description: >
 version: 0.0.1
 author: Robert Beyer <4sternrb@googlemail.com>
 dependencies:
+  dartson: ">=0.2.0 <0.3.0"
+transformers:
+- dartson

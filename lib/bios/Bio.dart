@@ -12,15 +12,15 @@ class Bio {
 
     num increaser = 100;
 
-    Bio({this.parent, this.child, num startValue: 0, this.createChildsPerSecond: 0.0 }){
-
+    Bio({
+    	this.parent, 
+    	this.child, 
+    	num startValue: 0, 
+    	this.createChildsPerSecond: 0.0 
+    }){
         instances++;
-
         this.name = "Bio["+instances.toString()+"]";
-
-        //this.createChildsPerSecond = createChildsPerSecond;
         this.counter = new Counter(value: startValue);
-
     }
 
     bool hasParent() => this.parent!=null;
@@ -35,6 +35,14 @@ class Bio {
 
     void setChild(Bio child) {
         this.child = child;
+    }
+
+    void toObject() {
+
+    }
+
+    void fromObject() {
+    	
     }
 
     void onCalc(int timeDifferenceInMilliseconds) {
