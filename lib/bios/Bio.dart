@@ -1,33 +1,4 @@
-library swarm;
-
-/*abstract class CounterInterface {
-    void add();
-}*/
-
-class Counter /*implements CounterInterface*/ {
-
-    num count;
-
-    Counter({num value: 0}){
-        this.count = value;
-    }
-
-    void add(num value) {
-        this.count += value;
-    }
-
-    void sub(num value) {
-        this.count -= value;
-    }
-
-    String toString() {
-        return count.toString();
-    }
-
-    int toInt() {
-        return count.toInt();
-    }
-}
+part of swarm;
 
 class Bio {
     static num instances = 0;
@@ -114,38 +85,6 @@ class Bio {
         }
     }
 }
-
-class Bakterie extends Bio {
-    Bakterie
-    ({
-        Bio parent, Bio child, 
-        num startValue: 0, double createChildsPerSecond: 0.0 }) : super(parent: parent, child: child, startValue: startValue, createChildsPerSecond: createChildsPerSecond 
-    ){
-        this.increaser = 1000;
-        this.name = "Bakterie";
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,6 +1,6 @@
 library swarm;
 
-import 'package:swarm/Bio.dart';
+import 'package:swarm/Swarm.dart';
 import 'dart:io';
 
 void main() {
